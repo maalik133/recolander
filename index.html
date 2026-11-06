@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Your $750 Cash App Reward</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #0A0612;
+      color: #fff;
+      min-height: 100vh;
+      min-height: 100dvh;
+      padding: 16px 16px 160px;
+    }
+    .container { max-width: 400px; margin: 0 auto; }
+
+    /* Toast */
+    .toast {
+      text-align: center; font-size: 13px; color: #D1D5DB; margin-bottom: 20px;
+      min-height: 20px; transition: opacity 0.3s;
+    }
+    .toast .amt { color: #22C55E; font-weight: 700; }
+
+    /* Main hero (center section matching screenshot) */
+    .hero {
+      text-align: center; margin-bottom: 20px;
+    }
+    .icons {
+      display: flex; align-items: center; justify-content: center; gap: 14px; margin-bottom: 16px;
+    }
+    .icon {
+      width: 72px; height: 72px; border-radius: 18px; display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+    }
+    .icon.reco svg, .icon.cash svg { width: 72px; height: 72px; }
+    .x { font-size: 20px; color: #6B7280; font-weight: 500; }
+
+    .rating {
+      display: flex; align-items: center; justify-content: center; gap: 6px;
+      background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 999px; padding: 6px 14px; font-size: 13px; margin: 0 auto 20px; width: fit-content;
+    }
+    .stars { color: #22C55E; letter-spacing: 1px; }
+
+    h1 {
+      font-size: clamp(40px, 11vw, 52px); font-weight: 800; text-align: center;
+      line-height: 1.05; letter-spacing: -1px; margin-bottom: 12px;
+    }
+    h1 .green { color: #22C55E; }
+    .sub {
+      text-align: center; color: #9CA3AF; font-size: 15px; line-height: 1.5;
+      max-width: 340px; margin: 0 auto 24px;
+    }
+
+    /* Reward card */
+    .reward-card {
+      background: linear-gradient(180deg, #0A2E12 0%, #052E0A 100%);
+      border: 1px solid rgba(34,197,94,0.3);
+      border-radius: 20px; padding: 18px 18px 16px; margin-bottom: 20px;
+      position: relative; overflow: hidden;
+    }
+    .reward-card::before {
+      content: ''; position: absolute; top: -40px; right: -40px;
+      width: 180px; height: 180px; background: radial-gradient(circle, rgba(34,197,94,0.35) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .card-top {
+      display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; position: relative;
+    }
+    .cash-label {
+      display: flex; align-items: center; gap: 8px; font-weight: 600; font-size: 15px;
+    }
+    .cash-label .mini {
+      width: 28px; height: 28px; background: #00D54B; border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .reco-badge {
+      background: rgba(99,102,241,0.25); border: 1px solid rgba(99,102,241,0.4);
+      color: #A5B4FC; font-size: 12px; font-weight: 600; padding: 4px 10px; border-radius: 8px;
+      display: flex; align-items: center; gap: 4px;
+    }
+    .card-label {
+      text-align: center; font-size: 12px; letter-spacing: 1px; color: #9CA3AF;
+      text-transform: uppercase; margin-bottom: 4px; position: relative;
+    }
+    .card-amount {
+      text-align: center; font-size: 56px; font-weight: 800; color: #4ADE80;
+      letter-spacing: -2px; line-height: 1; margin-bottom: 12px; position: relative;
+    }
+    .card-bottom {
+      display: flex; justify-content: space-between; font-size: 11px; color: #6B7280;
+      text-transform: uppercase; letter-spacing: 0.5px; position: relative;
+    }
+    .card-bottom .ready { color: #22C55E; }
+
+    /* Stats */
+    .stats {
+      display: flex; background: #120A1F; border: 1px solid #2D1B4E; border-radius: 16px;
+      margin-bottom: 16px; overflow: hidden;
+    }
+    .stat { flex: 1; text-align: center; padding: 16px 6px; }
+    .stat:not(:last-child) { border-right: 1px solid #2D1B4E; }
+    .stat .val { font-size: 20px; font-weight: 800; }
+    .stat .val.green { color: #22C55E; }
+    .stat .lbl { font-size: 10px; color: #6B7280; letter-spacing: 0.5px; margin-top: 2px; text-transform: uppercase; }
+
+    /* How to claim */
+    .how {
+      background: #120A1F; border: 1px solid #2D1B4E; border-radius: 20px; padding: 20px 18px; margin-bottom: 16px;
+    }
+    .how h2 {
+      font-size: 12px; letter-spacing: 1px; color: #9CA3AF; text-transform: uppercase;
+      margin-bottom: 16px; font-weight: 600;
+    }
+    .step {
+      display: flex; align-items: flex-start; gap: 12px; margin-bottom: 14px; font-size: 14.5px; line-height: 1.4;
+    }
+    .step:last-child { margin-bottom: 0; }
+    .step-num {
+      width: 28px; height: 28px; background: #22C55E; color: #000; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px; flex-shrink: 0;
+    }
+    .step strong { color: #22C55E; }
+
+    /* Sticky */
+    .sticky {
+      position: fixed; bottom: 0; left: 0; right: 0;
+      background: linear-gradient(180deg, transparent 0%, #0A0612 25%);
+      padding: 12px 16px 28px; z-index: 50;
+    }
+    .limited {
+      text-align: center; font-size: 12px; color: #86EFAC; margin-bottom: 8px;
+    }
+    .limited .dot { color: #22C55E; margin-right: 4px; }
+    .cta {
+      display: block; width: 100%; background: #22C55E; color: #000;
+      font-size: 16px; font-weight: 700; letter-spacing: 0.3px;
+      padding: 16px; border-radius: 999px; border: none; cursor: pointer;
+      box-shadow: 0 0 40px rgba(34,197,94,0.45);
+      text-align: center; text-decoration: none;
+    }
+    .cta:active { transform: scale(0.98); }
+    .note {
+      text-align: center; font-size: 12px; color: #6B7280; margin-top: 8px;
+    }
+    .note strong { color: #22C55E; }
+
+    /* Modal */
+    .modal-overlay {
+      position: fixed; inset: 0; background: rgba(0,0,0,0.75); z-index: 100;
+      display: none; align-items: flex-end; justify-content: center;
+    }
+    .modal-overlay.show { display: flex; }
+    .modal {
+      background: #120A1F; border: 1px solid #2D1B4E; border-radius: 24px 24px 0 0;
+      padding: 28px 20px 32px; width: 100%; max-width: 400px; text-align: center;
+      animation: slideUp 0.3s ease;
+    }
+    @keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
+    .modal .close {
+      position: absolute; top: 16px; right: 16px; width: 32px; height: 32px;
+      background: #1F1A2E; border: none; border-radius: 50%; color: #9CA3AF; font-size: 18px; cursor: pointer;
+    }
+    .modal .icon-wrap {
+      width: 72px; height: 72px; border-radius: 18px; margin: 0 auto 12px;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 0 30px rgba(129,140,248,0.5);
+    }
+    .modal .step-label { font-size: 12px; color: #22C55E; letter-spacing: 1px; font-weight: 700; margin-bottom: 8px; }
+    .modal h3 { font-size: 26px; font-weight: 800; margin-bottom: 10px; }
+    .modal h3 .green { color: #22C55E; }
+    .modal p { color: #D1D5DB; font-size: 14px; line-height: 1.5; margin-bottom: 18px; }
+    .modal .req {
+      background: #1A1229; border: 1px solid #2D1B4E; border-radius: 14px; padding: 14px; text-align: left;
+      margin-bottom: 18px; display: flex; gap: 12px; align-items: flex-start;
+    }
+    .modal .req .num {
+      width: 28px; height: 28px; background: #22C55E; color: #000; border-radius: 8px;
+      display: flex; align-items: center; justify-content: center; font-weight: 700; flex-shrink: 0;
+    }
+    .modal .req strong { display: block; font-size: 15px; margin-bottom: 2px; }
+    .modal .req span { font-size: 13px; color: #9CA3AF; }
+    .modal .cta { margin-bottom: 12px; }
+    .modal .continue {
+      font-size: 13px; color: #9CA3AF; text-decoration: underline; cursor: pointer; background: none; border: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="toast" id="toast">🇺🇸 Brandon T. just earned <span class="amt">$150.00</span> — paid instantly</div>
+
+    <div class="hero">
+      <div class="icons">
+        <div class="icon reco">
+          <svg viewBox="0 0 48 48" fill="none">
+            <defs>
+              <linearGradient id="recoGrad" x1="0" y1="0" x2="48" y2="48" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="#818CF8"/>
+                <stop offset="100%" stop-color="#F472B6"/>
+              </linearGradient>
+            </defs>
+            <rect width="48" height="48" rx="14" fill="url(#recoGrad)"/>
+            <path d="M16.5 13h15a1 1 0 0 1 1 1v21.5l-8.5-5.5-8.5 5.5V14a1 1 0 0 1 1-1z" fill="#fff"/>
+            <circle cx="24" cy="19.5" r="2.8" fill="#fff"/>
+          </svg>
+        </div>
+        <span class="x">×</span>
+        <div class="icon cash">
+          <svg viewBox="0 0 48 48" fill="none">
+            <rect width="48" height="48" rx="12" fill="#00D54B"/>
+            <path fill="#fff" d="M25.2 9.5l-1.6 3.1c2.4.6 4.2 1.9 4.6 4.1h-3.3c-.4-1-1.3-1.6-2.7-1.6-1.7 0-2.7.8-2.7 1.9 0 1.1.9 1.7 2.9 2.2l1.9.5c3.1.8 5 2.4 5 5.1 0 2.9-2.3 4.9-5.7 5.4l1.6 3.2h-3.4l-1.6-3.2c-3-.5-5.2-2.1-5.6-4.7h3.5c.4 1.2 1.5 1.9 3.1 1.9 1.8 0 2.9-.8 2.9-2.1 0-1.1-1-1.7-3.1-2.2l-1.8-.5c-2.9-.7-4.7-2.2-4.7-4.9 0-2.7 2.2-4.6 5.5-5.1L21.8 9.5h3.4z"/>
+          </svg>
+        </div>
+      </div>
+
+      <div class="rating">
+        <span class="stars">★★★★★</span>
+        <span>4.7 · App Store (50K+ reviews)</span>
+      </div>
+
+      <h1>Your <span class="green">$750</span><br>Cash App<br>Reward</h1>
+      <p class="sub">Earn real cash playing games, completing tasks, and testing apps. Cash out anytime — no minimum.</p>
+    </div>
+
+    <div class="reward-card">
+      <div class="card-top">
+        <div class="cash-label">
+          <div class="mini">
+            <svg viewBox="0 0 24 24" width="16" height="16"><text x="12" y="16" text-anchor="middle" font-size="12" font-weight="800" fill="#fff" font-family="Inter, sans-serif">$</text></svg>
+          </div>
+          Cash App
+        </div>
+        <div class="reco-badge">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+          Reco
+        </div>
+      </div>
+      <div class="card-label">Reco × Cash App Reward</div>
+      <div class="card-amount">$750.00</div>
+      <div class="card-bottom">
+        <span>For Verified User</span>
+        <span class="ready">● Ready to Claim</span>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat">
+        <div class="val" id="redeemedCount">1,292</div>
+        <div class="lbl">Redeemed</div>
+      </div>
+      <div class="stat">
+        <div class="val green" id="lastClaimed">15 seconds<br>ago</div>
+        <div class="lbl">Last Claimed</div>
+      </div>
+      <div class="stat">
+        <div class="val"><5 min</div>
+        <div class="lbl">Avg. Time</div>
+      </div>
+    </div>
+
+    <div class="how">
+      <h2>How It Works</h2>
+      <div class="step">
+        <div class="step-num">1</div>
+        <div>Sign up on Reco Social (select 21+)</div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div>Play games & complete tasks</div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div>Withdraw your <strong>$750</strong> or <strong>MORE</strong> to Cash App, PayPal, Visa or Crypto</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sticky">
+    <div class="limited"><span class="dot">●</span> Limited spots remaining</div>
+    <a class="cta" id="ctaBtn" href="#">CLAIM MY $750 →</a>
+    <div class="note"><strong>No credit card needed.</strong> Takes under 5 minutes.</div>
+  </div>
+
+  <!-- Step 1 Modal -->
+  <div class="modal-overlay" id="modal">
+    <div class="modal" style="position:relative;">
+      <button class="close" id="closeModal">×</button>
+      <div class="icon-wrap">
+        <svg viewBox="0 0 48 48" width="42" height="42" fill="none">
+          <defs>
+            <linearGradient id="recoGrad2" x1="0" y1="0" x2="48" y2="48" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#7C6CF5"/>
+              <stop offset="50%" stop-color="#A78BFA"/>
+              <stop offset="100%" stop-color="#F472B6"/>
+            </linearGradient>
+          </defs>
+          <rect width="48" height="48" rx="12" fill="url(#recoGrad2)"/>
+          <path d="M16 13h16a1.5 1.5 0 0 1 1.5 1.5v20.5l-9.5-6.5-9.5 6.5V14.5A1.5 1.5 0 0 1 16 13z" fill="#fff"/>
+          <circle cx="24" cy="20.5" r="2.2" fill="#fff"/>
+        </svg>
+      </div>
+      <div class="step-label">STEP 1 REQUIRED</div>
+      <h3>Sign up on <span style="background:linear-gradient(90deg,#818CF8,#F472B6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">Reco Social</span></h3>
+      <p>Get the <strong>Reco Social</strong> app, select 21+ at signup, and play games & complete tasks to qualify. Once finished, <strong>come right back here</strong> to claim your $750.</p>
+      <div class="req">
+        <div class="num">1</div>
+        <div>
+          <strong>Sign up on Reco Social (select 21+)</strong>
+          <span>Required to unlock Step 2 and claim your $750 reward</span>
+        </div>
+      </div>
+      <a class="cta" id="modalCta" href="#">Play Reco & Unlock →</a>
+      <button class="continue" id="continueBtn">I signed up on Reco, continue to Cash App</button>
+    </div>
+  </div>
+
+  <script>
+    var AFF_BASE = 'https://giftclick.org/?offer_id=5282&aff_id=209153&source=recott';
+
+    var toasts = [
+      { name: 'Maya P.', amt: '$100.00', flag: '🇺🇸' },
+      { name: 'Jordan K.', amt: '$250.00', flag: '🇺🇸' },
+      { name: 'Alex R.', amt: '$75.00', flag: '🇬🇧' },
+      { name: 'Sam T.', amt: '$180.00', flag: '🇨🇦' },
+      { name: 'Riley M.', amt: '$420.00', flag: '🇺🇸' },
+      { name: 'Casey L.', amt: '$95.00', flag: '🇺🇸' },
+      { name: 'Taylor S.', amt: '$310.00', flag: '🇦🇺' },
+      { name: 'Morgan D.', amt: '$150.00', flag: '🇺🇸' },
+      { name: 'Avery J.', amt: '$650.00', flag: '🇺🇸' },
+      { name: 'Quinn B.', amt: '$200.00', flag: '🇺🇸' }
+    ];
+    var toastIdx = 0;
+    var claiming = 1292;
+    var redeemed = 1292;
+    var lastSeconds = 15;
+
+    function buildOfferUrl() {
+      var url = new URL(AFF_BASE);
+      var current = new URLSearchParams(window.location.search);
+      current.forEach(function(value, key) {
+        if (!url.searchParams.has(key)) url.searchParams.set(key, value);
+      });
+      var campid = current.get('campid');
+      if (campid) url.searchParams.set('campid', campid);
+      return url.toString();
+    }
+
+    function updateToast() {
+      var t = toasts[toastIdx % toasts.length];
+      document.getElementById('toast').innerHTML = t.flag + ' ' + t.name + ' just earned <span class="amt">' + t.amt + '</span> — paid instantly';
+      toastIdx++;
+    }
+
+    function updateStats() {
+      claiming += Math.floor(Math.random() * 3) + 1;
+      redeemed += Math.floor(Math.random() * 2);
+      lastSeconds = Math.floor(Math.random() * 40) + 5;
+      document.getElementById('redeemedCount').textContent = redeemed.toLocaleString();
+      document.getElementById('lastClaimed').innerHTML = lastSeconds + ' seconds<br>ago';
+    }
+
+    function showModal() {
+      document.getElementById('modal').classList.add('show');
+      updateToast();
+      updateStats();
+    }
+
+    function goToOffer() {
+      window.location.href = buildOfferUrl();
+    }
+
+    document.getElementById('ctaBtn').addEventListener('click', function(e) {
+      e.preventDefault();
+      showModal();
+    });
+
+    document.getElementById('modalCta').addEventListener('click', function(e) {
+      e.preventDefault();
+      goToOffer();
+    });
+
+    document.getElementById('continueBtn').addEventListener('click', function() {
+      goToOffer();
+    });
+
+    document.getElementById('closeModal').addEventListener('click', function() {
+      document.getElementById('modal').classList.remove('show');
+    });
+
+    // Rotate toast every 4s
+    setInterval(updateToast, 4000);
+  </script>
+</body>
+</html>
